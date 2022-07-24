@@ -1,0 +1,37 @@
+<% if @user.errors.any? %>
+  <%= @user.errors.count %>error prohibited this obj from being saved:
+  <% @user.errors.full_messages.each do |message| %>
+    <%= message %>
+  <% end %>
+  <% end %>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+      <h2>User info</h2>
+        <%= form_with model:@user, local:true do |f| %>
+          <div class="form-group">
+            <label for="user_name">
+              Name
+            </label>
+          </div>
+          <%= f.text_field :name, autofocus: true, id:"inputName", placeholder:"名前"%>
+
+          <div class="form-group">
+            <label for="user_image">
+              Image
+            </label>
+          </div>
+
+          <%= f.file_field :profile_image, placeholder: "プロフィール画像" %>
+          <div class="form-group">
+            <label for="user_introduction">
+              Introduction
+            </label>
+          </div>
+          <%= f.text_area :caption %>
+          <div class="form-group">
+            <%= f.submit "Update User" %>
+            <% end %>
+          </div>
+    </div>
+  </div>
